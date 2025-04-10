@@ -105,3 +105,18 @@ Implemented Firestore queries for performing CRUD operations on documents.
 
 ### confirm_account_email Function
 Completes the account verification process. After sending a verification email, the end user receives a confirmation link. Upon clicking the link, they are redirected to the frontend, which should then call the `confirm_account_email` endpoint to complete the verification
+
+# An error with original code
+```
+line 70 - 71 : Having an issue here, if the user updates their email.
+The old user has deleted at line 66:
+    delete_firestore_doc(f'users/{old_account_email}')
+There is no user with old email:
+    new_user_details.pop('email') # email update handled above, not here
+    update_firestore_doc(f'users/{user_email}', new_user_details)
+```
+
+### Google document
+```
+https://docs.google.com/document/d/1QIvVMfhE1yZAG8yTFqGqnimn2PStFuAOO1BLEbUT9Hg/edit?tab=t.0#heading=h.1pfpupux06qs
+```
